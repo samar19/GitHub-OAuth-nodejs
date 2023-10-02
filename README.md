@@ -1,3 +1,3 @@
-to run 
-cd GitHub-OAuth-nodejs/     
-node app.js
+## run projectt 
+## cd GitHub-OAuth-nodejs/     
+## node app.js
