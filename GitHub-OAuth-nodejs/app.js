@@ -14,8 +14,8 @@ app.get("/auth", (req, res) => {
 
 app.get("/callback", (req, res) => {
     const code = req.query.code;
-    const clientId = "da7ff8b08525ef4711d2";
-    const clientSecret = "184a03f0e529a5bdb1b7ba92db1771d6b312f2c0";
+    const clientId = process.env.clientId;
+    const clientSecret = process.env.clientSecret;
 
     axios.post("https://github.com/login/oauth/access_token", {
         client_id: clientId,
