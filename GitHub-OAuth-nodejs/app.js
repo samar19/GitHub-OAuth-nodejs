@@ -14,8 +14,8 @@ app.get("/auth", (req, res) => {
 
 app.get("/callback", (req, res) => {
     const code = req.query.code;
-    const clientId = process.env.clientId;
-    const clientSecret = process.env.clientSecret;
+    const clientId = "da7ff8b08525ef4711d2";
+    const clientSecret = "184a03f0e529a5bdb1b7ba92db1771d6b312f2c0";
 
     axios.post("https://github.com/login/oauth/access_token", {
         client_id: clientId,
@@ -27,7 +27,6 @@ app.get("/callback", (req, res) => {
         }
     }).then((result) => {
         const accessToken = result.data.access_token;
-        // Use the access token to make authenticated requests to GitHub APIs
         axios.get("https://api.github.com/user", {
             headers: {
                 Authorization: `token ${accessToken}`
@@ -36,11 +35,11 @@ app.get("/callback", (req, res) => {
             const userData = response.data;
             res.send(`Welcome, ${userData.login}!`);
         }).catch((err) => {
-            console.log(err);
+            console.error("Error fetching user data from GitHub:", err.response.data);
             res.status(500).send("Error fetching user data from GitHub");
         });
     }).catch((err) => {
-        console.log(err);
+        console.error("Error exchanging code for access token:", err.response.data);
         res.status(500).send("Error exchanging code for access token");
     });
 });
