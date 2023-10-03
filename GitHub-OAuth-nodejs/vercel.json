@@ -1,0 +1,29 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "app.js",
+        "use": "@now/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/auth",
+        "dest": "app.js"
+      },
+      {
+        "src": "/callback",
+        "dest": "app.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "app.js"
+      }
+    ],
+    "env": {
+      "NODE_ENV": "production",
+      "GITHUB_CLIENT_ID": "da7ff8b08525ef4711d2",
+      "GITHUB_CLIENT_SECRET": "184a03f0e529a5bdb1b7ba92db1771d6b312f2c0"
+    }
+  }
+  
